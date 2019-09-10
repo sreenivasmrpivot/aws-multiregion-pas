@@ -1,3 +1,0 @@
-[submodule "./control-plane/paving-platform-automation-engine"]
-path = ./control-plane/paving-platform-automation-engine
-url = git@github.com:pivotal/paving-platform-automation-engine.git
