@@ -152,3 +152,4 @@ module "rds" {
   vpc_id             = "${module.infra.vpc_id}"
   tags               = "${local.actual_tags}"
 }
+
