@@ -69,7 +69,7 @@ networks-configuration:
       reserved_ip_ranges: ((pas_3_reserved_ip_ranges))
       availability_zone_names:
       - ((az3))
-  - name: ((service_network_name)) 
+  - name: ((services_network_name)) 
     subnets:
     - iaas_identifier: ((services_1_iaas_identifier))
       cidr: ((services_1_cidr))
