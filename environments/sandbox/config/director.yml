@@ -1,0 +1,142 @@
+az-configuration:
+- name: ((az1))
+  iaas_configuration_guid: ((iaas_configuration_guid))
+- name: ((az2))
+  iaas_configuration_guid: ((iaas_configuration_guid))
+- name: ((az3))
+  iaas_configuration_guid: ((iaas_configuration_guid))
+iaas-configurations:
+- additional_cloud_properties: {}
+  encrypted: true
+  iam_instance_profile: ((instance_profile))
+  key_pair_name: ((key_pair_name))
+  name: default
+  region: ((region))
+  security_group: ((security_group))
+  ssh_private_key: ((opsman_ssh.private_key)) 
+network-assignment:
+  network:
+    name: ((infra_network_name))
+  other_availability_zones: []
+  singleton_availability_zone:
+    name: ((az1))
+networks-configuration:
+  icmp_checks_enabled: false
+  networks:
+  - name: ((infra_network_name))
+    subnets:
+    - iaas_identifier: ((infra_1_iaas_identifier))
+      cidr: ((infra_1_cidr))
+      dns: ((infra_1_dns))
+      gateway: ((infra_1_gateway)) 
+      reserved_ip_ranges: ((infra_1_reserved_ip_ranges))
+      availability_zone_names:
+      - ((az1))
+    - iaas_identifier: ((infra_2_iaas_identifier))
+      cidr: ((infra_2_cidr))
+      dns: ((infra_2_dns))
+      gateway: ((infra_2_gateway)) 
+      reserved_ip_ranges: ((infra_2_reserved_ip_ranges))
+      availability_zone_names:
+      - ((az2))
+    - iaas_identifier: ((infra_3_iaas_identifier))
+      cidr: ((infra_3_cidr))
+      dns: ((infra_3_dns))
+      gateway: ((infra_3_gateway)) 
+      reserved_ip_ranges: ((infra_3_reserved_ip_ranges))
+      availability_zone_names:
+      - ((az3))
+  - name: ((pas_network_name)) 
+    subnets:
+    - iaas_identifier: ((pas_1_iaas_identifier))
+      cidr: ((pas_1_cidr))
+      dns: ((pas_1_dns))
+      gateway: ((pas_1_gateway)) 
+      reserved_ip_ranges: ((pas_1_reserved_ip_ranges))
+      availability_zone_names:
+      - ((az1))
+    - iaas_identifier: ((pas_2_iaas_identifier))
+      cidr: ((pas_2_cidr))
+      dns: ((pas_2_dns))
+      gateway: ((pas_2_gateway)) 
+      reserved_ip_ranges: ((pas_2_reserved_ip_ranges))
+      availability_zone_names:
+      - ((az2))
+    - iaas_identifier: ((pas_3_iaas_identifier))
+      cidr: ((pas_3_cidr))
+      dns: ((pas_3_dns))
+      gateway: ((pas_3_gateway)) 
+      reserved_ip_ranges: ((pas_3_reserved_ip_ranges))
+      availability_zone_names:
+      - ((az3))
+  - name: ((service_network_name)) 
+    subnets:
+    - iaas_identifier: ((services_1_iaas_identifier))
+      cidr: ((services_1_cidr))
+      dns: ((services_1_dns))
+      gateway: ((services_1_gateway)) 
+      reserved_ip_ranges: ((services_1_reserved_ip_ranges))
+      availability_zone_names:
+      - ((az1))
+    - iaas_identifier: ((services_2_iaas_identifier))
+      cidr: ((services_2_cidr))
+      dns: ((services_2_dns))
+      gateway: ((services_2_gateway)) 
+      reserved_ip_ranges: ((services_2_reserved_ip_ranges))
+      availability_zone_names:
+      - ((az2))
+    - iaas_identifier: ((services_3_iaas_identifier))
+      cidr: ((services_3_cidr))
+      dns: ((services_3_dns))
+      gateway: ((services_3_gateway)) 
+      reserved_ip_ranges: ((services_3_reserved_ip_ranges))
+      availability_zone_names:
+      - ((az3))
+properties-configuration:
+  director_configuration:
+    blobstore_type: local
+    bosh_recreate_on_next_deploy: false
+    bosh_recreate_persistent_disks_on_next_deploy: false
+    database_type: internal
+    director_worker_count: 5
+    encryption:
+      keys: []
+      providers: []
+    hm_emailer_options:
+      enabled: false
+    hm_pager_duty_options:
+      enabled: false
+    identification_tags: {}
+    job_configuration_on_tmpfs: false
+    keep_unreachable_vms: false
+    local_blobstore_options:
+      tls_enabled: true
+    ntp_servers_string: ((ntp_servers)) 
+    post_deploy_enabled: true
+    resurrector_enabled: true
+    retry_bosh_deploys: false
+    skip_director_drain: false
+  dns_configuration:
+    excluded_recursors: []
+    handlers: []
+  security_configuration:
+    generate_vm_passwords: true
+    opsmanager_root_ca_trusted_certs: false
+  syslog_configuration:
+    enabled: false
+resource-configuration:
+  compilation:
+    instances: automatic
+    instance_type:
+      id: automatic
+    internet_connected: false
+  director:
+    instances: automatic
+    persistent_disk:
+      size_mb: automatic
+    instance_type:
+      id: automatic
+    internet_connected: false
+vmextensions-configuration: []
+vmtypes-configuration: {}
+

@@ -1,0 +1,62 @@
+security_group: sg-09812dcee3ba4cde1
+key_pair_name: sandbox-ops-manager-key
+instance_profile: cp-ops-manager
+iaas_configuration_guid: babbc6d2194b1dacb248
+az1: us-west-2a
+az2: us-west-2b
+az3: us-west-2c
+
+infra_network_name: infrastructure
+infra_1_iaas_identifier: subnet-003d22575e28d5d98
+infra_1_cidr: 10.0.16.0/28
+infra_1_dns: 10.0.0.2
+infra_1_gateway: 10.0.16.1
+infra_1_reserved_ip_ranges: 10.0.16.0-10.0.16.4
+infra_2_iaas_identifier: subnet-01b753203828d4aec
+infra_2_cidr: 10.0.16.16/28
+infra_2_dns: 10.0.16.16-10.0.16.20
+infra_2_gateway: 10.0.16.17
+infra_2_reserved_ip_ranges: 10.0.16.16-10.0.16.20
+infra_3_iaas_identifier: subnet-09aab7389dc70f7fd
+infra_3_cidr: 10.0.16.32/28
+infra_3_dns: 10.0.0.2
+infra_3_gateway: 10.0.16.33
+infra_3_reserved_ip_ranges: 10.0.16.32-10.0.16.36
+
+pas_network_name: pas
+pas_1_iaas_identifier: subnet-0c963135b8f6b6a04
+pas_1_cidr: 10.0.4.0/24
+pas_1_dns: 10.0.0.2
+pas_1_gateway: 10.0.4.1
+pas_1_reserved_ip_ranges: 10.0.4.0-10.0.4.4
+pas_2_iaas_identifier: subnet-064f1ca11bae05345 
+pas_2_cidr: 10.0.5.0/24
+pas_2_dns: 10.0.0.1
+pas_2_gateway: 10.0.5.1
+pas_2_reserved_ip_ranges: 10.0.5.0-20.0.5.4
+pas_3_iaas_identifier: subnet-080c0ebb20f6bf623
+pas_3_cidr: 10.0.6.0/24
+pas_3_dns: 10.0.0.2
+pas_3_gateway: 10.0.6.1
+pas_3_reserved_ip_ranges: 10.0.6.0-30.0.6.4
+
+services_network_name: services
+services_1_iaas_identifier: subnet-020e52f5f6a2506b5
+services_1_cidr: 10.0.8.0/24
+services_1_dns: 10.0.0.2
+services_1_gateway: 10.0.8.1
+services_1_reserved_ip_ranges: 10.0.8.0-10.0.8.3
+services_2_iaas_identifier: subnet-06a2580853f7ec54a
+services_2_cidr: 10.0.9.0/24
+services_2_dns: 10.0.0.2
+services_2_gateway: 10.0.9.1
+services_2_reserved_ip_ranges: 10.0.9.0-10.0.9.3
+services_3_iaas_identifier: subnet-0a265553ab670b06e
+services_3_cidr: 10.0.10.0/24
+services_3_dns: 10.0.0.2
+services_3_gateway: 10.0.10.1
+services_3_reserved_ip_ranges: 10.0.10.0-10.0.10.3
+
+ntp_servers: 0.amazon.pool.ntp.org, 1.amazon.pool.ntp.org, 2.amazon.pool.ntp.org,
+
+
