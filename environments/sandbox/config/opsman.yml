@@ -18,4 +18,4 @@ opsman-configuration:
     use_instance_profile: true # default false
 
     # Optional, necessary if a role is needed to authorize the instance profile
-    # assume_role: arn:aws:iam::123456789:role/test
+    assume_role: arn:aws:iam::556274075601:policy/sandbox_ops_manager_role
