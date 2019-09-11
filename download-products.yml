@@ -14,7 +14,7 @@ resources:
     bucket: ((pivnet_products_bucket))
     region_name: ((region))
     secret_access_key: ((aws_secret_key))
-    regexp: \[ops-manager,(.*)\].*.yml
+    regexp: ops-manager-aws-(.*)\.yml  
 
 - name: pas-product
   type: s3
@@ -23,7 +23,7 @@ resources:
     bucket: ((pivnet_products_bucket))
     region_name: ((region))
     secret_access_key: ((aws_secret_key))
-    regexp: \[elastic-runtime,(.*)\]cf-.*.pivotal
+    regexp: cf-(.*)\.pivotal  
 
 - name: pas-stemcell
   type: s3
@@ -32,12 +32,12 @@ resources:
     bucket: ((pivnet_products_bucket))
     region_name: ((region))
     secret_access_key: ((aws_secret_key))
-    regexp: pas-stemcell/\[stemcells-ubuntu-xenial,(.*)\]bosh-stemcell-.*-azure.*\.tgz
+    regexp: pas-stemcell/light-bosh-stemcell-(.*)-aws(.*)\.tgz
 
 - name: platform-automation-pivnet
   type: pivnet
   source:
-    api_token: ((pivnet_token))
+    api_token: ((pivnet-token))
     product_slug: platform-automation
     product_version: 3\.(.*)
     sort_by: semver
@@ -83,7 +83,7 @@ credhub-interpolate: &credhub-interpolate
     CREDHUB_SERVER: ((credhub-server))
     CREDHUB_CA_CERT: ((credhub-ca-cert.certificate))
     PREFIX: '/concourse/main'
-    INTERPOLATION_PATHS: "/environment/sandbox/download-configs"
+    INTERPOLATION_PATHS: "environments/sandbox/download-configs"
   input_mapping:
     files: config
   output_mapping:
