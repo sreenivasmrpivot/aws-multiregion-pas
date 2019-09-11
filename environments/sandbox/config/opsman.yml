@@ -2,20 +2,12 @@
 opsman-configuration:
   aws:
     region: us-west-2
-    vm_name: ops-manager-vm # defaults Ops Manager-vm
-    boot_disk_size: 100 # default 200
+    vm_name: ops-manager-vm 
+    boot_disk_size: 100 
     vpc_subnet_id: subnet-0ddfc4784df8ba08e 
     security_group_id: sg-064872eef5a2c3459
     key_pair_name: sandbox-ops-manager-key 
-    iam_instance_profile_name: sandbox_ops_manager
+    iam_instance_profile_name: cp-ops-manager 
     instance_type: m5.large
-    # At least one IP address (public or private)
-    # needs to be assigned to the VM.
-    # It is also permissable to assign both.
     public_ip: 52.41.14.106
-
-    # If using Instance Profiles (omit if using AWS Credentials)
-    use_instance_profile: true # default false
-
-    # Optional, necessary if a role is needed to authorize the instance profile
-    assume_role: arn:aws:iam::556274075601:role/sandbox_om_role
+    use_instance_profile: true 
