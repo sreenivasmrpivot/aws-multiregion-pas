@@ -54,14 +54,14 @@ resources:
     #      secret_access_key: ((aws_secret_key))
     #      regexp: cf-(.*)\.pivotal  
 
-      #  - name: pas-stemcell
-      #    type: s3
-      #    source:
-      #      access_key_id: ((aws_access_key))
-      #      bucket: ((pivnet_products_bucket))
-      #      region_name: ((region))
-      #      secret_access_key: ((aws_secret_key))
-      #      regexp: pas-stemcell/light-bosh-stemcell-.*-aws.*\.tgz
+- name: pas-stemcell
+  type: s3
+  source:
+    access_key_id: ((aws_access_key))
+    bucket: ((pivnet_products_bucket))
+    region_name: ((region))
+    secret_access_key: ((aws_secret_key))
+    regexp: pas-stemcell/light-bosh-stemcell-(.*)-aws(.*)\.tgz
 
 - name: one-time-trigger
   type: time
@@ -164,3 +164,30 @@ jobs:
           env: interpolated-creds
         params:
           ENV_FILE: environments/sandbox/env/env.yml
+
+  - name: upload-pas-stemcell
+    serial: true
+    plan:
+      - aggregate:
+          - get: platform-automation-image
+            params:
+              unpack: true
+            passed:
+              - install-opsman
+          - get: platform-automation-tasks
+            params:
+              unpack: true
+          - get: pas-stemcell
+            trigger: true
+          - get: config
+      - task: interpolate-creds
+        <<: *interpolate-creds
+      - task: upload-pas-stemcell
+        image: platform-automation-image
+        file: platform-automation-tasks/tasks/upload-stemcell.yml
+        input_mapping:
+          env: interpolated-creds
+          stemcell: pas-stemcell
+        params:
+          ENV_FILE: environments/sandbox/env/env.yml
+      
