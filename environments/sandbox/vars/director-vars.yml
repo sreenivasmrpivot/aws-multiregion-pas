@@ -33,12 +33,12 @@ pas_2_iaas_identifier: subnet-064f1ca11bae05345
 pas_2_cidr: 10.0.5.0/24
 pas_2_dns: 10.0.0.1
 pas_2_gateway: 10.0.5.1
-pas_2_reserved_ip_ranges: 10.0.5.0-20.0.5.4
+pas_2_reserved_ip_ranges: 10.0.5.0-10.0.5.4
 pas_3_iaas_identifier: subnet-080c0ebb20f6bf623
 pas_3_cidr: 10.0.6.0/24
 pas_3_dns: 10.0.0.2
 pas_3_gateway: 10.0.6.1
-pas_3_reserved_ip_ranges: 10.0.6.0-30.0.6.4
+pas_3_reserved_ip_ranges: 10.0.6.0-10.0.6.4
 
 services_network_name: services
 services_1_iaas_identifier: subnet-020e52f5f6a2506b5
