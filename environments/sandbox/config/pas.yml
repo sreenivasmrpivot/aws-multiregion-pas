@@ -371,7 +371,7 @@ resource-config:
       id: automatic
     internet_connected: false
     elb_names:
-    - alb:sandbox-ssh-lb
+    - sandbox-ssh-lb
   diego_cell:
     instances: 1
     instance_type:
@@ -447,7 +447,7 @@ resource-config:
       id: automatic
     internet_connected: false
     elb_names:
-    - alb:sandbox-web-lb
+    - sandbox-web-lb
   syslog_adapter:
     instances: 1
     instance_type:
