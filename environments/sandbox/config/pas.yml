@@ -366,12 +366,14 @@ resource-config:
       id: automatic
     internet_connected: false
   diego_brain:
-    instances: 1
+    additional_vm_extensions:
+      - ssh-lb-security-groups
+    instances: automatic
     instance_type:
       id: automatic
-    internet_connected: false
+    internet_connected: true
     elb_names:
-    - sandbox-ssh-lb
+    - alb:sandbox-ssh-tg
   diego_cell:
     instances: 1
     instance_type:
@@ -442,12 +444,15 @@ resource-config:
       id: automatic
     internet_connected: false
   router:
-    instances: 1
+    additional_vm_extensions:
+      - web-lb-security-groups
+    instances: automatic
     instance_type:
       id: automatic
-    internet_connected: false
+    internet_connected: true
     elb_names:
-    - sandbox-web-lb
+    - alb:sandbox-web-tg-80
+    - alb:sandbox-web-tg-443
   syslog_adapter:
     instances: 1
     instance_type:
