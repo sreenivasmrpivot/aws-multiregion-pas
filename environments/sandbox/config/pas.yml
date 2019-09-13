@@ -367,7 +367,7 @@ resource-config:
     internet_connected: false
   diego_brain:
     additional_vm_extensions:
-      - sandbox-ssh-lb-security-group 
+    - ssh-lb-security-groups
     instances: automatic
     instance_type:
       id: automatic
@@ -445,7 +445,7 @@ resource-config:
     internet_connected: false
   router:
     additional_vm_extensions:
-      - sandbox-lb-security-group 
+      - web-lb-security-groups
     instances: automatic
     instance_type:
       id: automatic
