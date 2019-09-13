@@ -1,0 +1,60 @@
+resource_types:
+- name: terraform
+  type: docker-image
+  source:
+    repository: ljfranklin/terraform-resource
+    tag: beta-backend
+
+resources:
+- name: config
+  type: git
+  source:
+    private_key: ((configuration.private_key))
+    uri: ((configuration-uri))
+    branch: master
+    paths: 
+      - terraforming-aws/**/*
+    depth: 1
+
+- name: daily
+  type: time
+  source:
+    interval: 24h
+
+- name: env-state-azure
+  type: terraform
+  source:
+    backend_type: s3
+    env_name: sandbox
+    backend_config:
+      bucket: ((s3_bucket))
+      key: tf_state/terraform.tfstate
+      region: ((region))
+      access_key: ((aws_access_key))
+      secret_key: ((aws_secret_key))
+    vars:
+      access_key: ((aws_access_key))
+      secret_key: ((aws_secret_key))
+      env_name: "sandbox"
+      dns_suffix: "miclip.io"
+      dns_subdomain: "sandbox"
+      ops_manager_vm: false
+      hosted_zone: ((hosted_zone_id))
+      region: ((region))
+      availability_zones: ["us-west-2a","us-west-2b","us-west-2c"]
+      ops_manager_ami: ""
+
+      
+jobs:
+- name: pave-environment
+  serial: true
+  public: false
+  plan:
+  - aggregate:
+    - get: config
+  - do:
+    - put: env-state-azure
+      params:
+        terraform_source: config/terraforming-aws/terraforming-pas
+        env_name: sandbox
+        action: destroy
